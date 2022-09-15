@@ -3,11 +3,12 @@ import ExpenseItem from "./ExpenseItem";
 import './Expenses.css';
 
 const Expenses = (props) => {
+    const temp = props.products.reverse()
     return (
         <Card className="expenses">
             {
                 // print all products
-                props.products.map((item, key) => {
+                temp.map((item, key) => {
                     return <ExpenseItem
                         index={key}
                         title={item.title}
