@@ -11,9 +11,11 @@ const ExpenseItem = (props) => {
 
 
   const clickHandler = () => {
+    const newDate = new Date();
+
     setMyTitle("Updated Value!");
-    console.log(myTitle);
-    setMyDate(new Date());
+    // console.log(myTitle);
+    setMyDate(newDate.toISOString());
     setMyPrice(100);
     // title = "Updated Value!";
     // console.log("Clicked!!", myTitle);

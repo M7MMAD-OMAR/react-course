@@ -6,7 +6,7 @@ const ExpenseDate = (props) => {
     // const year = props.date.getFullYear
 
     // get date and convert array
-    const date_array = props.date.substring(0, 10).split('-')
+    const date_array = props.date.toString().substring(0, 10).split('-')
 
     return (
         <div className='expense-date'>
