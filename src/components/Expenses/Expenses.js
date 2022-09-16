@@ -3,7 +3,9 @@ import ExpenseItem from "./ExpenseItem";
 import './Expenses.css';
 
 const Expenses = (props) => {
+
     const temp = props.products.reverse()
+
     return (
         <Card className="expenses">
             {

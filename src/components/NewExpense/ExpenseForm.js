@@ -6,19 +6,19 @@ let counter = 1;
 const ExpenseForm = () => {
     const [title, setTitle] = useState('');
     const [price, setPrice] = useState(1);
-    let [date, setDate] = useState(new Date().toDateString());
+    const [date, setDate] = useState(new Date());
     const [products, setProduct] = useState(JSON.parse(localStorage.getItem('products') || '[]'));
 
     // convert date to array
-    date = date.toString().split('-')
+    // date = date.toString().split('-')
 
     // add expense value in array
-    const add_expense = () => {
+    const add_expense = (e) => {
         const temp = {
             id: products.length + 1, // create auto ID
             title: title,
             price: price,
-            date: date,
+            date: new Date(date),
         }
 
         products.push(temp);
@@ -27,13 +27,14 @@ const ExpenseForm = () => {
     }
 
     // Clear all input in Expense Form
-    const clear_expense = () => {
+    const clear_expense = (e) => {
+        e.defaultPrevented();
         setTitle('');
         setPrice(1);
     }
 
     return (
-        <form>
+        <form onSubmit={add_expense}>
             <div className="new-expense__controls">
                 <div className="new-expense__control">
                     <label>Title</label>
@@ -60,8 +61,7 @@ const ExpenseForm = () => {
             </div>
 
             <div className="new-expense__actions">
-                <button type='submit' onClick={add_expense}>Add Expense</button>
-                <button onClick={clear_expense}>Clear Expense</button>
+                <button type='submit'>Add Expense</button>
             </div>
 
 
